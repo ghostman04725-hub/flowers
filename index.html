@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!-- saved from url=(0052)file:///C:/Users/UserHome/Desktop/flowers/index.html -->
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
 <title>Атласные розы</title>
 <style>
   body{margin:0;font-family:Arial;text-align:center;background:#ffe6eb;overflow-x:hidden;}
@@ -22,6 +22,39 @@
 </style>
 </head>
 <body>
+<div style="position:fixed; left:20px; top:200px; text-align:center;">
+  <div style="display:flex; align-items:center; gap:20px; margin:20px;">
+    <div>
+        <img src="side1.jpg.jpeg" width="150">
+        <p>Атласные розы</p>
+    </div>
+
+    <div style="max-width:400px;">
+        <p>
+        Красивые атласные розы ручной работы. Сделаны из качественной атласной ленты.
+        Отлично подойдут для подарка, украшения дома или праздника.
+        Каждый букет собирается вручную.
+        </p>
+    </div>
+
+</div>
+</div>
+
+<div style="position:fixed; right:20px; top:200px; text-align:center;">
+  <div style="display:flex; align-items:center; gap:20px; margin:20px; justify-content:flex-end;">
+
+<div style="max-width:300px;">
+<p>
+Все розы сделаны вручную из атласной ленты. 
+Каждый лепесток аккуратно сформирован, поэтому букет выглядит очень реалистично. 
+Такой подарок долго сохраняет свою красоту и не вянет.
+</p>
+</div>
+
+<img src="side2.jpg.jpeg" width="120">
+
+</div>
+</div>
 
 <div class="top">Атласные розы ручной работы 🌹</div>
 
@@ -32,24 +65,28 @@
 <div class="container">
   <div class="card">
     <!-- локальный файл 1.jpg; если не найдётся — JS подставит запасную картинку -->
-    <img id="imgA" src="./Атласные розы_files/Red_rose.jpg" alt="Букет из 15 роз">
+    <img id="imgA" src="rose1.jpg.jpeg" alt="Букет из 15 роз">
     <h2>Букет из 15 роз</h2>
     <div class="price">12000 тг</div>
-    <button onclick="window.location.href=&#39;https://wa.me/77053658014&#39;">Заказать в WhatsApp</button>
+    <button onclick="window.location.href='https://wa.me/77053658014'">Заказать в WhatsApp</button>
   </div>
 
   <div class="card">
-    <img id="imgB" src="./Атласные розы_files/Rose_pink_1.jpg" alt="Букет из 7 роз">
+    <img id="imgB" src="rose2.jpg.jpeg" alt="Букет из 7 роз">
     <h2>Букет из 7 роз</h2>
     <div class="price">5000 тг</div>
-    <button onclick="window.location.href=&#39;https://wa.me/77053658014&#39;">Заказать в WhatsApp</button>
+    <button onclick="window.location.href='https://wa.me/77053658014'">Заказать в WhatsApp</button>
   </div>
 </div>
 
 <div class="bottom">Пишите для заказа 📩 &nbsp; WhatsApp: +7 705 365 8014</div>
+<div style="display:flex; justify-content:space-between; margin:40px;">
+
+
+</div>
 
 <!-- мелкий блок для отладки (можешь скрыть потом) -->
-<div id="debug">Замена: imgB -&gt; fallback</div>
+<div id="debug">Проверка: ожидаем локальные 1.jpg и 2.jpg</div>
 
 <script>
 /*
@@ -103,6 +140,22 @@ setInterval(createPetal, fallIntervalMs);
 // Доп. подсказки в консоль для быстрой диагностики
 console.log('Если картинки не видны, проверьте: 1) index.html и 1.jpg/2.jpg в одной папке; 2) расширения файлов отображаются; 3) откройте файл через браузер (правый клик -> Открыть с помощью -> Chrome).');
 </script>
-
-
-<div class="petal" style="left: 57.3374vw; font-size: 28.7369px; animation-duration: 5.27861s; opacity: 0.9;">🌹</div><div class="petal" style="left: 57.1465vw; font-size: 16.1908px; animation-duration: 6.93144s; opacity: 0.9;">🌹</div><div class="petal" style="left: 62.9866vw; font-size: 29.0032px; animation-duration: 7.36363s; opacity: 0.9;">🌹</div><div class="petal" style="left: 30.5028vw; font-size: 27.4037px; animation-duration: 9.42837s; opacity: 0.9;">🌹</div><div class="petal" style="left: 54.4491vw; font-size: 33.0246px; animation-duration: 8.72555s; opacity: 0.9;">🌹</div><div class="petal" style="left: 93.1183vw; font-size: 18.1133px; animation-duration: 4.46392s; opacity: 0.9;">🌹</div><div class="petal" style="left: 0.394796vw; font-size: 30.953px; animation-duration: 5.66928s; opacity: 0.9;">🌹</div><div class="petal" style="left: 5.20559vw; font-size: 30.0416px; animation-duration: 8.7178s; opacity: 0.9;">🌹</div><div class="petal" style="left: 60.5935vw; font-size: 32.4865px; animation-duration: 9.70111s; opacity: 0.9;">🌹</div><div class="petal" style="left: 62.3909vw; font-size: 35.0477px; animation-duration: 6.92756s; opacity: 0.9;">🌹</div><div class="petal" style="left: 97.5028vw; font-size: 26.1256px; animation-duration: 6.31401s; opacity: 0.9;">🌹</div><div class="petal" style="left: 20.2532vw; font-size: 23.3877px; animation-duration: 6.3806s; opacity: 0.9;">🌹</div><div class="petal" style="left: 95.7831vw; font-size: 24.5613px; animation-duration: 6.74773s; opacity: 0.9;">🌹</div><div class="petal" style="left: 70.9805vw; font-size: 25.8896px; animation-duration: 9.94522s; opacity: 0.9;">🌹</div><div class="petal" style="left: 81.7894vw; font-size: 28.6154px; animation-duration: 7.60658s; opacity: 0.9;">🌹</div><div class="petal" style="left: 51.9107vw; font-size: 29.7236px; animation-duration: 9.92689s; opacity: 0.9;">🌹</div><div class="petal" style="left: 47.9579vw; font-size: 17.2321px; animation-duration: 5.6697s; opacity: 0.9;">🌹</div><div class="petal" style="left: 76.7177vw; font-size: 38.0511px; animation-duration: 9.27192s; opacity: 0.9;">🌹</div><div class="petal" style="left: 23.2742vw; font-size: 37.6183px; animation-duration: 9.39987s; opacity: 0.9;">🌹</div><div class="petal" style="left: 60.2962vw; font-size: 15.0624px; animation-duration: 9.91527s; opacity: 0.9;">🌹</div></body></html>
+<div style="
+width:100%;
+text-align:center;
+padding:30px;
+font-size:40px;
+font-family:cursive;
+color:white;
+background:linear-gradient(90deg,#ff4d6d,#ff758f,#ff4d6d);
+letter-spacing:3px;
+font-weight:bold;
+text-shadow:0 0 10px white, 0 0 20px pink, 0 0 30px red;
+">
+🌹 Buket Flowers 🌹 Buket Flowers 🌹 Buket Flowers 🌹
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
