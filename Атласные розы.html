@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///C:/Users/UserHome/Desktop/flowers/index.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Атласные розы</title>
+<style>
+  body{margin:0;font-family:Arial;text-align:center;background:#ffe6eb;overflow-x:hidden;}
+  .top{background:linear-gradient(90deg,#ff3b6f,#ff1744);color:#fff;padding:25px;font-size:28px;font-weight:700;}
+  .text{margin:20px auto 0;font-size:18px;width:78%;}
+  .container{display:flex;justify-content:center;gap:40px;margin:40px 0;flex-wrap:wrap;}
+  .card{background:#fff;width:300px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.18);padding:15px;transition:0.25s;}
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.25);}
+  .card img{width:100%;height:220px;object-fit:cover;border-radius:14px;}
+  .card h2{color:#ff3b6f;margin:12px 0 6px;}
+  .price{font-weight:700;margin-bottom:12px;}
+  button{background:#25D366;border:none;color:#fff;padding:10px 18px;border-radius:10px;cursor:pointer;font-size:15px;}
+  .bottom{margin-top:50px;background:linear-gradient(90deg,#ff3b6f,#ff1744);color:#fff;padding:20px;font-size:17px;}
+  .petal{position:fixed;top:-30px;font-size:22px;pointer-events:none;animation:fall linear forwards;}
+  @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+  /* small helper for debug text */
+  #debug{position:fixed;left:10px;bottom:10px;background:rgba(255,255,255,0.9);padding:6px 8px;border-radius:6px;font-size:12px;color:#333}
+</style>
+</head>
+<body>
+
+<div class="top">Атласные розы ручной работы 🌹</div>
+
+<div class="text">
+  Красивые искусственные розы из атласной ленты. <b>Цена от 5000 тг и выше</b>, зависит от количества роз.
+</div>
+
+<div class="container">
+  <div class="card">
+    <!-- локальный файл 1.jpg; если не найдётся — JS подставит запасную картинку -->
+    <img id="imgA" src="./Атласные розы_files/Red_rose.jpg" alt="Букет из 15 роз">
+    <h2>Букет из 15 роз</h2>
+    <div class="price">12000 тг</div>
+    <button onclick="window.location.href=&#39;https://wa.me/77053658014&#39;">Заказать в WhatsApp</button>
+  </div>
+
+  <div class="card">
+    <img id="imgB" src="./Атласные розы_files/Rose_pink_1.jpg" alt="Букет из 7 роз">
+    <h2>Букет из 7 роз</h2>
+    <div class="price">5000 тг</div>
+    <button onclick="window.location.href=&#39;https://wa.me/77053658014&#39;">Заказать в WhatsApp</button>
+  </div>
+</div>
+
+<div class="bottom">Пишите для заказа 📩 &nbsp; WhatsApp: +7 705 365 8014</div>
+
+<!-- мелкий блок для отладки (можешь скрыть потом) -->
+<div id="debug">Замена: imgB -&gt; fallback</div>
+
+<script>
+/*
+  1) Если локальная картинка не загрузилась (ошибка или пустая),
+     скрипт автоматически подставит рабочую картинку из интернета.
+  2) Кроме того, скрипт записывает в #debug, что произошло.
+*/
+
+const fallIntervalMs = 420;
+const debug = id => { const el = document.getElementById('debug'); if(el) el.textContent = id; console.log(id); };
+
+// запасные (надёжные) картинки роз в интернете:
+const FALLBACK_A = 'https://upload.wikimedia.org/wikipedia/commons/3/35/Red_rose.jpg';
+const FALLBACK_B = 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Rose_pink_1.jpg';
+
+// проверяем изображение: если failed — заменяем
+function ensureImage(imgEl, fallbackUrl){
+  function replace(){
+    debug('Замена: ' + imgEl.id + ' -> fallback');
+    imgEl.src = fallbackUrl;
+  }
+  // если при загрузке сработал onerror — заменяем
+  imgEl.addEventListener('error', () => { replace(); });
+  // через 300ms проверим naturalWidth (вдруг браузер закэшировал коряво)
+  setTimeout(() => {
+    if(!imgEl.complete || imgEl.naturalWidth === 0){
+      replace();
+    } else {
+      debug(imgEl.id + ' загружено локально (' + imgEl.naturalWidth + 'x' + imgEl.naturalHeight + ')');
+    }
+  }, 300);
+}
+
+ensureImage(document.getElementById('imgA'), FALLBACK_A);
+ensureImage(document.getElementById('imgB'), FALLBACK_B);
+
+// создаём падающие розы (эмодзи) — декоративно
+function createPetal(){
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.innerHTML = '🌹';
+  petal.style.left = Math.random()*100 + 'vw';
+  petal.style.fontSize = (14 + Math.random()*26) + 'px';
+  petal.style.animationDuration = (4 + Math.random()*6) + 's';
+  petal.style.opacity = 0.9;
+  document.body.appendChild(petal);
+  setTimeout(()=> petal.remove(), 12000);
+}
+setInterval(createPetal, fallIntervalMs);
+
+// Доп. подсказки в консоль для быстрой диагностики
+console.log('Если картинки не видны, проверьте: 1) index.html и 1.jpg/2.jpg в одной папке; 2) расширения файлов отображаются; 3) откройте файл через браузер (правый клик -> Открыть с помощью -> Chrome).');
+</script>
+
+
+<div class="petal" style="left: 57.3374vw; font-size: 28.7369px; animation-duration: 5.27861s; opacity: 0.9;">🌹</div><div class="petal" style="left: 57.1465vw; font-size: 16.1908px; animation-duration: 6.93144s; opacity: 0.9;">🌹</div><div class="petal" style="left: 62.9866vw; font-size: 29.0032px; animation-duration: 7.36363s; opacity: 0.9;">🌹</div><div class="petal" style="left: 30.5028vw; font-size: 27.4037px; animation-duration: 9.42837s; opacity: 0.9;">🌹</div><div class="petal" style="left: 54.4491vw; font-size: 33.0246px; animation-duration: 8.72555s; opacity: 0.9;">🌹</div><div class="petal" style="left: 93.1183vw; font-size: 18.1133px; animation-duration: 4.46392s; opacity: 0.9;">🌹</div><div class="petal" style="left: 0.394796vw; font-size: 30.953px; animation-duration: 5.66928s; opacity: 0.9;">🌹</div><div class="petal" style="left: 5.20559vw; font-size: 30.0416px; animation-duration: 8.7178s; opacity: 0.9;">🌹</div><div class="petal" style="left: 60.5935vw; font-size: 32.4865px; animation-duration: 9.70111s; opacity: 0.9;">🌹</div><div class="petal" style="left: 62.3909vw; font-size: 35.0477px; animation-duration: 6.92756s; opacity: 0.9;">🌹</div><div class="petal" style="left: 97.5028vw; font-size: 26.1256px; animation-duration: 6.31401s; opacity: 0.9;">🌹</div><div class="petal" style="left: 20.2532vw; font-size: 23.3877px; animation-duration: 6.3806s; opacity: 0.9;">🌹</div><div class="petal" style="left: 95.7831vw; font-size: 24.5613px; animation-duration: 6.74773s; opacity: 0.9;">🌹</div><div class="petal" style="left: 70.9805vw; font-size: 25.8896px; animation-duration: 9.94522s; opacity: 0.9;">🌹</div><div class="petal" style="left: 81.7894vw; font-size: 28.6154px; animation-duration: 7.60658s; opacity: 0.9;">🌹</div><div class="petal" style="left: 51.9107vw; font-size: 29.7236px; animation-duration: 9.92689s; opacity: 0.9;">🌹</div><div class="petal" style="left: 47.9579vw; font-size: 17.2321px; animation-duration: 5.6697s; opacity: 0.9;">🌹</div><div class="petal" style="left: 76.7177vw; font-size: 38.0511px; animation-duration: 9.27192s; opacity: 0.9;">🌹</div><div class="petal" style="left: 23.2742vw; font-size: 37.6183px; animation-duration: 9.39987s; opacity: 0.9;">🌹</div><div class="petal" style="left: 60.2962vw; font-size: 15.0624px; animation-duration: 9.91527s; opacity: 0.9;">🌹</div></body></html>
